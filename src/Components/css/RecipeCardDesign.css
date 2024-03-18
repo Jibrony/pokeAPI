@@ -1,0 +1,25 @@
+.card-image-wrapper {
+  overflow: hidden;
+  height: 200px;
+  /* Altura deseada para las imágenes */
+}
+
+.card-image-wrapper .img-product {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.Carta {
+  height: 500px !important;
+  width: 100% !important;
+  margin-bottom: 25px !important;
+}
+
+.body-card .descripcion {
+  font-size: 19px !important;
+}
+
+.row {
+  margin-bottom: 25px;
+  /* Ajusta el valor según sea necesario */
+}

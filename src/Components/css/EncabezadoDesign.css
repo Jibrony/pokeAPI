@@ -1,0 +1,18 @@
+.contenedor {
+    height: 20vh;
+    width: 100vh;
+    margin-top: 100px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo img{
+    height: auto;
+    width: 400px;
+    margin: -50px;
+}

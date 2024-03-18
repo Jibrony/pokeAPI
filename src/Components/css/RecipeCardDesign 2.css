@@ -1,0 +1,15 @@
+.card-image-wrapper {
+    overflow: hidden;
+    height: 200px;
+    /* Altura deseada para las imágenes */
+  }
+  
+  .card-image-wrapper .img-product {
+    width: 100%;
+    height: auto;
+  }
+  
+  .fila {
+    margin-bottom: 25px;
+    /* Ajusta el valor según sea necesario */
+  }
