@@ -1,4 +1,4 @@
-export default   {
+{
     "abilities": [
         {
             "ability": {
@@ -12575,5 +12575,4 @@ export default   {
         }
     ],
     "weight": 60
-
 }

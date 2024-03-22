@@ -1,13 +1,27 @@
-import EncabezadoDesign from "./css/EncabezadoDesign.css";
+import {
+    Row,
+    Col,
+    Image,
+  } from "react-bootstrap/";
+function Encabezado({logo, titulo}) {
+  return (
+    <Row style={{ paddingBottom: "1em" }}>
+      <Col lg={1}>
+        <Image
+          className="img-thumbnail"
+          src={logo}
+          roundedCircle
+          sizes="150px"
+        />
+      </Col>
 
-function Encabezado({}){
-    return(
-        <div className="contenedor">
-            <div className="logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"/>
-            </div>
-        </div>
-    );
+      <Col lg={11}>
+        <h1 className="display-1 " style={{ paddingTop: "0.7em" }}>
+          {titulo}
+        </h1>
+      </Col>
+    </Row>
+  );
 }
 
 export default Encabezado;

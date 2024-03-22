@@ -1,59 +1,58 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import PokeApi from '../PokeApi'; // Asegúrate de tener la ruta correcta al archivo de recetas
-import RecipeCardDesign from './css/RecipeCardDesign.css'; // Asegúrate de tener la ruta correcta al archivo de estilos
-import { useEffect, useState } from 'react';
+import {Button, Card, Container, Row, Col} from 'react-bootstrap';
+import '../Components/css/pcDesign.css'
 
-function PokemonCard() {
-
-    const [pokemonList, setPokemonList] = useState();
-
-    const URL = "https://pokeapi.co/api/v2/pokemon?limit=150&offset=0";
-
-    useEffect(() => {
-        fetch(URL)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data.results);
-                console.log("Esta es la pokeapi");
-                setPokemonList([data.results]);
-            });
-    }, []);
-
-    return (
-        <Container>
-            <ul>
-            <Row className='fila'>
-                {PokeApi.map((pokemon, colIndex) => (
-                    <Col key={colIndex} lg={3}>
-                        <Card style={{ width: '100%', height: '100%' }} className='Carta-Pokemon'>
-                            <div className="card-image-wrapper">
-                                {pokemonList.map((pokemon, index) => (
-                                    <div key={index}>
-                                        <Card.Img variant="top" src={pokemon.sprite[1].front_default} name="pokemon" className="img-product" />
-                                    </div>
-                                ))}
-                            </div>
-                            <Card.Body className='poke-card'>
-                                <Card.Title style={{ fontSize: "30px" }}>
-                                    <strong>
-                                        {pokemon.name}
-                                    </strong>
-                                </Card.Title>
-                                {/* <Card.Text className='descripcion'>
-                                    {recipe.descripcion}
-                                </Card.Text> */}
-                                <div className="button-container">
-                                    <Button variant="primary">Ver receta</Button>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
-            </ul>
-        </Container>
-    );
+function PokemonCard({ name, brief, image }) {
+  return (
+    <Col md={3} style={{ marginBottom: '20px' }}>
+      <Card style={{ width: '100%', height: 'auto'}}>
+        <Card.Img variant="top" src={image} className='img-pokemon'/>
+        <Card.Body>
+          <Card.Title className='title-pokemon'>{name}</Card.Title>
+          <Card.Text className='text-pokemon'>{brief}</Card.Text>
+          <Button variant="primary" className='btn-pokemon'>Go somewhere</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  );
 }
 
-export default PokemonCard;
+function PokemonCardGrid({ pokemonList, selectedPokemon }) {
+  const renderPokemonCards = () => {
+    if (selectedPokemon) {
+      return (
+        <PokemonCard
+          name={selectedPokemon.name}
+          brief="Breve descripción"
+          image={selectedPokemon.sprites.front_default}
+        />
+      );
+    } else {
+      return pokemonList.map((pokemon, index) => (
+        <PokemonCard
+          key={index}
+          name={pokemon.name}
+          brief={pokemon.brief}
+          image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index + 1}.png`}
+        />
+      ));
+    }
+  };
+
+  const rows = [];
+  for (let i = 0; i < renderPokemonCards().length; i += 4) {
+    rows.push(
+      <Row key={i}>
+        {renderPokemonCards().slice(i, i + 4)}
+      </Row>
+    );
+  }
+
+  return (
+    <Container>
+      {rows}
+    </Container>
+  );
+}
+
+export default PokemonCardGrid;
