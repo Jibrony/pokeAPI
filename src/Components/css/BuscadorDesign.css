@@ -1,0 +1,14 @@
+.mb-3 {
+    display: flex !important;
+    width: 600px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 430px !important;
+}
+
+.btn-buscador {
+    background-color: #FF004D !important;
+    border-color: #FF004D !important;
+    color: white !important;
+    text-transform: uppercase !important;
+}

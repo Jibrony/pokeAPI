@@ -1,23 +1,15 @@
 import "./App.css";
 import {
-  Container,
   Row,
-  Col,
-  InputGroup,
-  Form,
-  Button,
-  Image,
 } from "react-bootstrap/";
 import React, { useEffect, useState } from "react";
 import Encabezado from "./Components/Encabezado";
 import Buscador from "./Components/Buscador";
 import PokemonCard from "./Components/PokemonCard";
 import pokemonData from "./pokemonData.js";
-import PokemonCardGrid from "./Components/PokemonCard";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   const [nombre, setNombre] = useState("Nombre");
   const [name, setName] = useState("Nombre");
@@ -27,7 +19,7 @@ function App() {
 
   useEffect(() => {
 
-    
+
     fetch(URL)
       .then((response) => response.json())
       .then((data) => {
@@ -38,19 +30,38 @@ function App() {
 
   return (
     <div className="App">
-      <Encabezado
-        logo="https://i.ibb.co/z4z4z4z/logo.png"
-        titulo="Pokédex"
-      />
-      <Container>
-        <h1>{pokemonData.base_experience}</h1>
-        {/* <Encabezado logo={logo} titulo={"Juegos"} /> */}
-        <Buscador texto={"Buscar Pokemon"} foundPokemon={setPokemon} />
+      <div className="contenedor-maestro">
 
-        <PokemonCardGrid pokemonList={pokemonList} selectedPokemon={selectedPokemon} />
+        <div className="contenedor-encabezado">
+          <Encabezado
+            logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"
+            titulo="ANDREY JULIAN GUTIERREZ ARCE"
+          />
+        </div>
 
-
-      </Container>
+        <div className="contenedor-buscador">
+          <Buscador texto={"Buscar Pokemon"} foundPokemon={setPokemon} />
+        </div>
+        {/*{pokemon ? (
+            <PokemonCard
+            name={pokemon.name}
+            image={pokemon.sprites.front_default}
+            />
+            ) : (
+              <h1>No se a encontrado pokemon</h1>
+            )}*/}
+        <div className="contenedor-pokemon">
+          <Row className="row">
+            {pokemonList.map((pokemon, index) => (
+              <PokemonCard
+                key={index}
+                name={pokemon.name}
+                image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${index + 1}.png`}
+              />
+            ))}
+          </Row>
+        </div>
+      </div>
     </div>
   );
 }

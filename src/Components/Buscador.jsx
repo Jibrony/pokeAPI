@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Row, InputGroup,Form, Button } from "react-bootstrap";
+import BuscadorDesign from "./css/BuscadorDesign.css"
+
 function Finder({texto, foundPokemon}) {
 
   const[name, setName]=useState("");
@@ -24,14 +26,14 @@ function Finder({texto, foundPokemon}) {
     <Row>
       <h1>{name}</h1>
       <InputGroup className="mb-3">
-        <Form.Control
+        <Form.Control className="form-control"
           placeholder="Nombre del Pokemon"
           aria-label=""
           aria-describedby="basic-addon2"
           onChange={(e) => setName(e.target.value)}
         />
         
-        <Button variant="outline-secondary" id="button-addon2" onClick={getPokemonData}>
+        <Button variant="outline-secondary" id="button-addon2" onClick={getPokemonData} className="btn-buscador">
           {texto}
         </Button>
       </InputGroup>

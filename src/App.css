@@ -1,7 +1,23 @@
 body {
-  background-color: white !important;
+  background-color: #1D2B53 !important;
 }
 .App {
+  text-align: center;
+}
+
+.contenedor-encabezado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.contenedor-pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 

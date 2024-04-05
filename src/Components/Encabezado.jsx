@@ -1,26 +1,24 @@
 import {
-    Row,
-    Col,
-    Image,
-  } from "react-bootstrap/";
-function Encabezado({logo, titulo}) {
+  Row,
+  Col,
+  Image,
+  Container
+} from "react-bootstrap/";
+import EncabezadoDesign from "./css/EncabezadoDesign.css";
+function Encabezado({ logo, titulo }) {
   return (
-    <Row style={{ paddingBottom: "1em" }}>
-      <Col lg={1}>
-        <Image
-          className="img-thumbnail"
-          src={logo}
-          roundedCircle
-          sizes="150px"
-        />
-      </Col>
+    <Container>
+        <div className="logo">
+          <Image
+            className="img-logo"
+            src={logo}
+          />
+        </div>
 
-      <Col lg={11}>
-        <h1 className="display-1 " style={{ paddingTop: "0.7em" }}>
+        <h1 className="titulo ">
           {titulo}
         </h1>
-      </Col>
-    </Row>
+    </Container>
   );
 }
 

@@ -11,8 +11,18 @@
     text-align: center;
 }
 
-.logo img{
+.img-logo {
     height: auto;
     width: 400px;
     margin: -50px;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    color: #FAEF5D !important;
 }
